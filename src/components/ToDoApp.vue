@@ -1,29 +1,27 @@
 <template>
-  <div>
-    <div class="item">
+   <div>
+     <div class="item">
       <p>Nowe zadanie:</p>
         <input type="text" placeholder="Wpisz nowe zadanie" v-model="newItem">
       <button @click="addItem">Dodaj</button>
-    </div>
-    <div 
-    class="item"
-    v-for="item in items" 
-    v-bind:key="item.id"
-    v-bind:class="
-    {
-      completed:item.completed
-    }">
+     </div>
+      <toDoItem v-for="item in items" 
+      v-bind:key="item.id"
+      v-bind:item="item"
+      @removeClicked="removeItem"
+      />
 
-        <h2>{{item.title}}</h2>
-        <button v-if=!item.completed @click="removeItem(item.id)">Zrobione</button>
+
     </div>
 
-  </div>
 </template>
 
 <script>
-
+import toDoItem from './toDoItem.vue';
 export default {
+  components:{
+    toDoItem
+  },
   data(){
     return{
       newItem:"",
@@ -55,13 +53,12 @@ export default {
     border: 1px solid grey;
     margin: 8px;
     padding: 10px;
-    /* text-align: center; */
   }
   .completed{
     opacity: 0.5;
-  }
-  .completed h2{
     text-decoration: line-through;
-    }
+
+  }
+  
 
 </style>

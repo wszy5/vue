@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Todo App</h1>
+    <h1>Lista zadań</h1>
     <ToDoApp/>
   </div>
 </template>
 
 <script>
-import Todo from './components/ToDoApp.vue';
+import Todo from './components/toDoApp.vue';
 
 export default {
   components:{
